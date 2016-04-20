@@ -1,17 +1,24 @@
 #include <Adafruit_NeoPixel.h>
 
-#define PIN     11
+#define LEDPIN     11
+#define BUTTONPIN 4
 #define N_LEDS 156
 #define PIXLES_TO_RUN 5
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, LEDPIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
   strip.begin();
+  pinMode(BUTTONPIN, INPUT_PULLUP);
 }
 
 void loop() {
   //generate colors for PIXLES_TO_RUN num pixles
+  while(digitalRead(BUTTONPIN)){
+    clearStrand();
+    strip.show();
+    delay(100);
+  }
   
   clearStrand();
   for(int i = 1;i <= PIXLES_TO_RUN;i++){

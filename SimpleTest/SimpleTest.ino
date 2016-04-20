@@ -7,6 +7,8 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
  
 void setup() {
   strip.begin();
+  
+  //Test all the pixles
   chase(strip.Color(0, 0, 255));
   chase(strip.Color(0, 255, 0));
   chase(strip.Color(255, 0, 0));
